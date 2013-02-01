@@ -1,3 +1,5 @@
+require 'mode'
+
 class Sample
   def initialize(ary)
     raise SampleSizeIsZero if ary.length == 0
@@ -16,6 +18,10 @@ class Sample
       mid = (len - 1) / 2
       sorted[mid]
     end
+  end
+
+  def mode
+    Mode.new(@ary)
   end
 
   private

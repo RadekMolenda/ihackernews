@@ -1,4 +1,5 @@
 require_relative "../lib/sample"
+require_relative "../lib/mode"
 
 describe Sample do
   describe "validation" do
@@ -23,6 +24,13 @@ describe Sample do
       expect(Sample.new([-1, 1, -3]).median).to eq -1.0
       expect(Sample.new([-5, -1, 1, -3]).median).to eq -2
       expect(Sample.new([0, -1, 1, -3]).median).to eq -0.5
+    end
+  end
+
+  describe "#mode" do
+    it "calls right methods" do
+      Mode.should_receive(:new).with([1, 2])
+      Sample.new([1, 2]).mode
     end
   end
 
