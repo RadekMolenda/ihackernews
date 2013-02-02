@@ -15,3 +15,6 @@ bundle exec bin/ihackernews_notify test2@example.com,test3@example.com
 Go to root directory of application and run:
 
 bundle install
+
+Remember to add copy config/smtp.yml.example to config/smtp.yml and edit fields
+as necessary
