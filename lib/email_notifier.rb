@@ -4,8 +4,6 @@ require 'yaml'
 class EmailNotifier
   def send_email(to,opts={})
     opts[:body] ||= "Messages should go here!!!"
-    p config
-
     msg = <<END_OF_MESSAGE
 From: #{config['from_alias']} <#{config['from']}>
 To: <#{to}>
