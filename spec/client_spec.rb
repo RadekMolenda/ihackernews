@@ -3,8 +3,8 @@ require_relative '../lib/request'
 require_relative '../lib/client'
 
 describe Client do
-  describe '#fetch_news' do
-    subject { Client.fetch_news }
+  describe '#fetch' do
+    subject { Client.fetch 'http://api.ihackernews.com/page' }
     it "fetches json data", :vcr do
       expect(subject).not_to be_empty
     end
