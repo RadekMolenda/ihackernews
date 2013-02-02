@@ -1,6 +1,6 @@
 require_relative './mode'
 
-class Sample
+class Stats
   def initialize(ary)
     raise SampleSizeIsZero if ary.length == 0
     @ary = ary
