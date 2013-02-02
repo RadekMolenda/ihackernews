@@ -1,21 +1,23 @@
-require 'forwardable'
+require 'yaml'
 require_relative './stats'
+require_relative './client'
+require_relative './request'
 
 class IhackernewsClient
-  extend Forwardable
-
-  def_delegators :stats, :median, :mode, :mean
-
-  def initialize(news)
-    @news = news
+  def news
+    all_news.select{ |post| post[:points] > stats.median }
   end
 
-  def news
-    @news.select{ |post| post[:points] > median }
+  def stats
+    @stats ||= Stats.new(all_news.map{|post| post[:points]})
+  end
+
+  def all_news
+    @news ||= Client.fetch(endpoint)[:items]
   end
 
   private
-  def stats
-    @stats ||= Stats.new(@news.map{|post| post[:points]})
+  def endpoint
+    YAML.load_file('config/api_endpoint.yml').fetch('endpoint')
   end
 end

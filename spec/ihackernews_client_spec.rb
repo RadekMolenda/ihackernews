@@ -1,17 +1,23 @@
 require 'spec_helper'
-require 'set'
 require_relative '../lib/ihackernews_client'
 
-describe IhackernewsClient do
-  let(:post1) { { points: 10 }}
-  let(:post2) { { points: 15 }}
-  let(:post3) { { points: 14 }}
-  let(:post4) { { points: 120 }}
-  let(:news){ [post1, post2, post3, post4] }
+describe IhackernewsClient, :vcr do
+  subject{ IhackernewsClient.new }
+  let(:all_news){ subject.all_news }
+  let(:stats){ subject.stats }
   describe '#news' do
-    subject{ IhackernewsClient.new }
-    it "returns messages with score points above median" do
-      pending
+    it "returns news with score points above median" do
+      subject.news.each do |post|
+        expect(post[:points]).to be > stats.median
+      end
+    end
+    it "returns news that are part of the all_news" do
+      subject.news.each do |post|
+        expect(all_news).to include post
+      end
+    end
+    it "returns just a part of the all_news" do
+      expect(subject.news.length).to be < all_news.length
     end
   end
 end
