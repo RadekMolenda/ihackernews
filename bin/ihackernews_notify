@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+if ARGV[0].nil?
+  p "please add one or more coma separated email addresses"
+  exit 1
+end
+
+require_relative "../app/news_reader"
+
+message = MessageBuffer.new
+news_reader = NewsReader.new(message)
+
+begin
+  news_reader.print
+rescue CouldNotGetResource => e
+  p "Couldn't fetch resource from Ihackernews, please try again later"
+  exit 2
+end
+
+notifier = EmailNotifier.new
+
+emails = ARGV[0].split(",")
+
+emails.each do |email|
+  notifier.send_email email, body: message
+end
+
+exit 0
