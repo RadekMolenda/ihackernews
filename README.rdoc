@@ -1,0 +1,14 @@
+== README
+
+This application fetches the most recent news from Ihackernews and emails news
+with point scores above median
+
+== Usage
+To launch the application you need to go to root directory of the app
+usage:
+`bundle exec bin/ihackernews_notify test1@example.com` or
+`bundle exec bin/ihackernews_notify test2@example.com,test3@example.com`
+
+== Instalation
+Go to root directory of application and run:
+`bundle install`
