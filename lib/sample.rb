@@ -1,4 +1,4 @@
-require 'mode'
+require_relative './mode'
 
 class Sample
   def initialize(ary)

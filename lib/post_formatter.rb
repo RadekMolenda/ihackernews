@@ -8,6 +8,7 @@ class PostFormatter
 **********
 Title: #{@post[:title]}
 Link: #{@post[:url]}
+Points: #{@post[:points]}
 Author: #{@post[:postedBy]}
 
 EOS

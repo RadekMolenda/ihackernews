@@ -4,6 +4,6 @@ class NewsFormatter
   end
 
   def to_s
-    @news.map(&:to_s).join("\n")
+    @news.map{|post| PostFormatter.new(post).to_s }.join("\n")
   end
 end
