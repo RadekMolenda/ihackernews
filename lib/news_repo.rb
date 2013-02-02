@@ -1,3 +1,4 @@
+require 'forwardable'
 require_relative './sample'
 
 class NewsRepo
