@@ -1,4 +1,4 @@
-class PostFormatter
+class PostTemplate
   def initialize(post)
     @post = post
   end

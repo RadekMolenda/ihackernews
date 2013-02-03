@@ -1,4 +1,4 @@
-class StatsFormatter
+class StatsTemplate
   def initialize(stats)
     @stats = stats
   end

@@ -13,10 +13,10 @@ class NewsReader
 
   private
   def header
-    @output.puts StatsFormatter.new(@ihackernews.stats).to_s
+    @output.puts StatsTemplate.new(@ihackernews.stats).to_s
   end
 
   def body
-    @output.puts NewsFormatter.new(@ihackernews.news).to_s
+    @output.puts NewsTemplate.new(@ihackernews.news).to_s
   end
 end
